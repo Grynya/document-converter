@@ -4,7 +4,7 @@ App generates html documents from xml data stored in a DynamoDb table. Developed
 ## Running the app
 
 ```bash
-# install a packages 
+# install packages 
 $ npm install
 
 # build and deploy lambda to default profile using SAM 
