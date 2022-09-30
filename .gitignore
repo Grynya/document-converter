@@ -1,0 +1,5 @@
+/.idea/
+/DocumentConverterFunction/dist
+/DocumentConverterFunction/node_modules
+/.aws-sam/
+/DocumentConverterFunction/src/schema/document.schema.ts

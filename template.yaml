@@ -1,0 +1,27 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Check online partner backend Serverless Express Application
+Resources:
+  DocumentConverterFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./DocumentConverterFunction/dist
+      Handler: lambda.handler
+      MemorySize: 1024
+      Runtime: nodejs16.x
+      Timeout: 300
+      Policies:
+        - AmazonDynamoDBFullAccess
+      Events:
+        ProxyApiGreedy:
+          Type: HttpApi
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+Outputs:
+  DocumentConverterApi:
+    Description: "API endpoint"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com"
+    Export:
+      Name: "DocumentConverterApi"
